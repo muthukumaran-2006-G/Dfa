@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DFA Minimiser</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>⚙ DFA <span>Minimiser</span></h1>
+    <p>Interactive DFA Minimisation Visualizer</p>
+</header>
+
+<main>
+    <div class="grid">
+
+        <section>
+            <div class="panel">
+                <h2>01 / DFA Configuration</h2>
+
+                <label>States (comma separated)</label>
+                <input id="states" value="A,B,C,D,E">
+
+                <label>Input Alphabets</label>
+                <input id="alphabet" value="0,1">
+
+                <label>Start State</label>
+                <select id="start"></select>
+
+                <label>Final States</label>
+                <input id="final" value="C,E">
+
+                <div class="row">
+                    <button class="secondary" onclick="loadSample()">
+                        Load Sample
+                    </button>
+
+                    <button class="secondary" onclick="buildTable()">
+                        Build Table
+                    </button>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>02 / Transition Table</h2>
+
+                <div class="table-wrap" id="inputTable"></div>
+
+                <button class="primary" onclick="minimize()">
+                    Minimise DFA →
+                </button>
+
+                <div id="error" class="result-box hidden"></div>
+            </div>
+
+            <div class="panel">
+                <h2>03 / Test Input String</h2>
+
+                <label>Enter Input String</label>
+                <input id="testString" placeholder="Example: 0101">
+
+                <button class="primary" onclick="testString()">
+                    Test String
+                </button>
+
+                <div id="testResult" class="result-box">
+                    Enter a string to test.
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="stats">
+                <div class="stat">
+                    <span>Original States</span>
+                    <strong id="oldCount">5</strong>
+                </div>
+
+                <div class="stat">
+                    <span>Minimized States</span>
+                    <strong id="newCount">—</strong>
+                </div>
+
+                <div class="stat">
+                    <span>States Removed</span>
+                    <strong id="removedCount">—</strong>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>04 / Original DFA</h2>
+                <div id="originalInfo"></div>
+
+                <svg id="originalDiagram"
+                     class="diagram"
+                     viewBox="0 0 650 300">
+                </svg>
+            </div>
+
+            <div class="panel">
+                <h2>05 / Minimisation Steps</h2>
+
+                <div id="steps">
+                    Click Minimise DFA to begin.
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>06 / Minimized DFA</h2>
+
+                <div id="minimizedInfo"></div>
+
+                <svg id="minimizedDiagram"
+                     class="diagram"
+                     viewBox="0 0 650 300">
+                </svg>
+
+                <div id="minTable" class="table-wrap"></div>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<footer>
+    DFA Minimiser | HTML • CSS • JavaScript
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>  
